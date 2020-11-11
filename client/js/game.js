@@ -11642,9 +11642,27 @@ function Game() {
             this.addZone("lwb",ltrect,"lwb");
         }
         else T.draw(ctx,"0di2",btx,bty,T.width("0di2")*0.8,T.height("0di2")*1.2);
-        
+        //0di2 base results from T1 rectangle
         if (wbosspage=="fight") T.draw(ctx,"00xm",btx+20,bty+13);
+		//00xm Last results
         else T.draw(ctx,"022s",btx+20,bty+13);
+		//022s world boss
+		
+		// Buttons
+           var wbrect = (new Rect(780,233.5,T.width("0jmt")/1.5,T.height("01nq"))).small();
+		  //  var wbrect = (new Rect(xpos-T.width("01nq"),T.width("01nq"),T.height("01nq"))).small();
+			//var wbrect = (new Rect(btx,bty,T.width("0di2")*0.8,T.height("0di2")*1.2)).small();
+            if (wbrect.isInside(GM.x,GM.y)) {
+               // T.draw(ctx,"0jmt",xpos-T.width("0jmt"));
+				//0jmt hover
+				   //T.draw(ctx,"0jmt",780,233.5,T.width("0jmt")/1.5,T.height("0jmt"));
+				    T.draw(ctx,"0jmt",780,233.5,T.width("0jmt")/1.5,T.height("0jmt"));
+                this.addZone("wbweb",wbrect,"wbweb");
+            }
+            else T.draw(ctx,"01nq",780,233.5,T.width("01nq")/1.5,T.height("01nq"));
+			//01nq normal
+            text(ctx,"Worldboss WEB",896,267,"50px"+FONT,"white","center","middle");
+		
 
         var btx=1024*0.66;
         var bty=640*0.185;
@@ -18319,6 +18337,9 @@ function Game() {
         } else if (action=="web") {
             // Visit web of tournaments
              window.open("https://cosmosquest.net/tournament.php");
+		} else if (action=="wbweb") {
+            // Visit wb 
+             window.open("https://cosmosquest.net/wb.php");
         } else if (action=="ibattle") {
             // Import tournament battle
             document.getElementById("popup").style.display="block";
