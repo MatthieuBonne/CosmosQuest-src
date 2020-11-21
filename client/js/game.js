@@ -11971,11 +11971,19 @@ function Game() {
                         if (picked[c] == false && canPick && !pgesync && Date.now() >= (readytopge+10000)) {
                             var crect = (new Rect(x-cardSize*0.5+(j*cardSize*1.115),y-cardSize*0.5+(i*cardSize*1.115),cardSize,cardSize)).small();
                             if (crect.isInside(GM.x,GM.y)) {
-                                ctx.fillStyle = "rgba(255,255,255,0.1)";
+                                ctx.fillStyle = "rgba(255,255,255,0.01)";
                                 ctx.fillRect(x-cardSize*0.93*0.5+(j*cardSize*1.115),y-cardSize*0.93*0.5+(i*cardSize*1.115),cardSize*0.93,cardSize*0.93);
                                 this.addZone("pge",crect,"pge",{target:c});
                             }
-                        } else if (Date.now() < (readytopge+10000)) {
+							else if (picked[c] == false) {
+							 
+                            
+							ctx.fillStyle = "rgba(255,255,255,0.1)";
+                            ctx.fillRect(x-cardSize*0.93*0.5+(j*cardSize*1.115)-1,y-cardSize*0.93*0.5+(i*cardSize*1.115)-1,cardSize*0.93+2,cardSize*0.93+2);
+							
+							 }
+                        } 
+						else if (Date.now() < (readytopge+10000)) {
                             text(ctx,timer(((readytopge+10000)-Date.now())/1000),x+(j*cardSize*1.115),y+(i*cardSize*1.115),"24px"+FONT,"white","center","middle");
                         }
                         ++c;
